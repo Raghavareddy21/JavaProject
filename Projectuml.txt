@@ -1,0 +1,194 @@
+@startuml
+
+package "students" #DDDDDD {
+  Person--|>StudentHome 	
+  class StudentSignup
+  class Login
+}
+package "faculty" #DDDDDD {
+ Person--|>FacultyHome
+ class FacultySignup
+ class Principal
+}
+package "functions" #DDDDDD {
+  class Functions
+  class Session
+}
+Login--o Session
+StudentHome--o Session
+FacultyHome--o Session
+Login --* Principal  
+Login --*StudentHome
+Login --*FacultyHome
+Functions --o Principal  
+Functions --o StudentHome
+Functions --o FacultyHome
+Functions --o StudentSignup
+Functions --o FacultySignup
+StudentSignup --* FacultyHome
+StudentSignup --* Principal
+FacultySignup --* Principal
+class FacultyHome{
+	+ JFrame frmHome
+	- JTextField rollno
+	- JPasswordField passwordField
+	- JTable table
+	- String FullName
+	- String Username
+	- String ID
+	- String Gender
+	- String Password
+	- String DOB
+	- String Mail
+	- String Phone
+	- String Qualifications
+	- String Branch
+	- String DOE
+	- String Status
+	- JLabel name
+	- JLabel user
+	- JLabel id_1
+	- JLabel gen
+	- JLabel age
+	- JLabel mail_1
+	- JLabel sub
+	- JLabel addr
+	- JLabel phone
+	- JLabel name1
+	- JComboBox comboBox
+	- JTextField Att
+	- JPanel a
+	- JLabel pic
+	- JTextField Rollnumber
+	+SetLables():void
+	+{static}main():void
+	-initilize():void
+}
+class Principal{
+	+ JFrame frame
+	- String Username
+	- String Password
+	+ {static} main():void
+	+ Principal()
+	- initialize():void
+
+}
+class Functions{
+	+ {static} ResultSet rs
+	+ Functions()
+	+{static} checkStudentLogin():boolean
+	+{static} CheckFacultyLogin():boolean
+	+{static}logout():void
+	+{static}Setup():ResultSet
+	+{static}AVG(int[] arr):int
+	+{static}Total(String str):int[]
+}
+class Login{
+	
+	+ JFrame frmLoginForm
+	- {static} JTextField user
+	- {static} JPasswordField pass
+	+{static} main():void
+	-initialize():void
+	-{static}Check(String name,String password):boolean
+	- {static} CheckFaculty(String name,String password):void
+	-{static}CheckStudent(String name,String password):boolean
+}
+class StudentSignup{
+	+ JFrame frmStudentSignup
+	- JTextField username
+	- JTextField fullname
+	- JTextField roll
+	- JPasswordField passwordField
+	- JTextField mailid
+	- JTextField phone
+	- {static} final ButtonGroup buttonGroup = new ButtonGroup()
+	- String Label
+	- JDateChooser dateChooser
+	- JTextField Addres
+	- JComboBox box1
+	- JComboBox AP
+	- JComboBox ES
+	- JComboBox box2
+	- JDateChooser DOE_1
+	- JFileChooser fileChooser
+	+{static}main():void
+	-initialize():void
+	+Signup():void
+}
+class FacultySignup{
+	+JFrame frmFacultySignup
+	- JTextField user
+	- JTextField name
+	- JTextField id
+	- JPasswordField passwordField
+	- JTextField mail
+	- JTextField phone
+	- JTextField qualifications
+	- final ButtonGroup buttonGroup
+	- String Label
+	- JDateChooser dateChooser
+	- JDateChooser dateChooser_1
+	- JComboBox branch
+	- JComboBox ES
+	- JTextField Addres
+	- JFileChooser fileChooser
+	+ {static} main():void
+	+ FacultySignup()
+	- initialize():void
+	+ signup():void
+	+ SetLables():void
+	+{static} main():void
+	- initialize():void
+
+}
+
+class Person {
+	+ String Name
+	+ String Gender
+	+ String DOB
+	+ String Mail
+	+ int Phone
+	+ String Address
+	+ String DOE
+	+ String Status
+}
+class StudentHome{
+	+ JFrame frmHome
+	- JTable table
+	- int RollNo
+	- String Username
+	- String Password
+	- String Gender
+	- String DOB
+	- String Mail
+	- int Phone
+	- String Clas
+	- String Address
+	- String Branch
+	- String Program
+	- String DOE
+	- String Status
+	- JLabel name
+	- JLabel user
+	- JLabel clas
+	- JLabel roll
+	- JLabel name1
+	- JLabel addr
+	- JLabel phone
+	- JLabel mail_1
+	- JLabel age
+	- JLabel gender
+	- JLabel pic
+	- JComboBox comboBox
+	+{static}main():void
+	-initialize():void
+	+ SetLables():void
+
+}
+class Session{
+	{static} Username
+	{static} Password
+	+{static} Setuser:void
+}
+@enduml
